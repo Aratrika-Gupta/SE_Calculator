@@ -24,5 +24,25 @@ class TestTrigonometric(unittest.TestCase):
     def test_hyperbolic(self):
         self.assertAlmostEqual(self.calc.evaluate("sinh(0)"), 0.0, places=2)
 
+    def test_division_by_zero(self):
+        with self.assertRaises(DivisionByZeroError):
+            self.calc.evaluate("10/0")
+
+    def test_invalid_expression(self):
+        with self.assertRaises(InvalidExpressionError):
+            self.calc.evaluate("2 + * 3")
+
+    def test_asin_domain_error(self):
+        with self.assertRaises(DomainError):
+            self.calc.evaluate("asin(2)")
+
+    def test_empty_expression(self):
+        with self.assertRaises(InvalidExpressionError):
+            self.calc.evaluate("")
+
+    def test_non_string_expression(self):
+        with self.assertRaises(InvalidExpressionError):
+            self.calc.evaluate(123)
+
 if __name__ == "__main__":
     unittest.main()
