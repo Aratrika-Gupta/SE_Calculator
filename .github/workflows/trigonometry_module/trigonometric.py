@@ -31,3 +31,5 @@ class Trigonometric:
 
     def tanh(self, x):
         return math.tanh(float(x))
+    
+#OK
