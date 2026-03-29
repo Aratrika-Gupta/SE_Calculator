@@ -12,6 +12,12 @@ class Trigonometric:
         return math.cos(self.to_radians(x))
 
     def tan(self, x):
+        x = float(x)
+
+          # tan is undefined at 90 + k*180
+        if x % 180 == 90:
+           raise ValueError("tan undefined at 90 + k*180")
+
         return math.tan(self.to_radians(x))
 
     def asin(self, x):
