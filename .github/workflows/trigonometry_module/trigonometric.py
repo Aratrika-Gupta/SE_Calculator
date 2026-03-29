@@ -15,10 +15,16 @@ class Trigonometric:
         return math.tan(self.to_radians(x))
 
     def asin(self, x):
-        return math.degrees(math.asin(float(x)))
+        x = float(x)
+        if x < -1 or x > 1:
+            raise ValueError("asin domain is [-1,1]")
+        return math.degrees(math.asin(x))
 
     def acos(self, x):
-        return math.degrees(math.acos(float(x)))
+        x = float(x)
+        if x < -1 or x > 1:
+            raise ValueError("acos domain is [-1,1]")
+        return math.degrees(math.acos(x))
 
     def atan(self, x):
         return math.degrees(math.atan(float(x)))
