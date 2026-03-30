@@ -1,5 +1,10 @@
+import os
+import sys
 import unittest
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
 from calculator import Calculator
+from exceptions import DomainError, DivisionByZeroError, InvalidExpressionError, DomainError
 
 class TestTrigonometric(unittest.TestCase):
 
@@ -35,10 +40,10 @@ class TestTrigonometric(unittest.TestCase):
         self.assertAlmostEqual(self.calc.evaluate("tan(0)"), 0.0, places=2)
 
     def test_asin_one(self):
-        self.assertAlmostEqual(self.calc.evaluate("asin(1)"), 90.0, places=2)
+        self.assertAlmostEqual(self.calc.evaluate("asin_value(1)"), 90.0, places=2)
 
     def test_acos_one(self):
-        self.assertAlmostEqual(self.calc.evaluate("acos(1)"), 0.0, places=2)
+        self.assertAlmostEqual(self.calc.evaluate("acos_value(1)"), 0.0, places=2)
 
     def test_expression_mix(self):
         self.assertAlmostEqual(self.calc.evaluate("5 + 2*cos(60)"), 6.0, places=2)
@@ -62,7 +67,7 @@ class TestTrigonometric(unittest.TestCase):
 
     def test_asin_domain_error(self):
         with self.assertRaises(DomainError):
-            self.calc.evaluate("asin(2)")
+            self.calc.evaluate("asin_domain(2)")
 
     def test_empty_expression(self):
         with self.assertRaises(InvalidExpressionError):

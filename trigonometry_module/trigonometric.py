@@ -1,5 +1,9 @@
 import math
-from exceptions import DomainError
+
+try:
+    from ..exceptions import DomainError
+except ImportError:
+    from exceptions import DomainError
 
 class Trigonometric:
 
@@ -21,18 +25,17 @@ class Trigonometric:
 
         return math.tan(self.to_radians(x))
 
-    def asin_domain(self, x):
+    def asin(self, x):
         x = float(x)
         if x < -1 or x > 1:
-            raise ValueError("asin domain is [-1,1]")
+            raise DomainError("asin domain is [-1,1]")
         return math.degrees(math.asin(x))
 
-    def acos_domain(self, x):
+    def acos(self, x):
         x = float(x)
         if x < -1 or x > 1:
-            raise ValueError("acos domain is [-1,1]")
+            raise DomainError("acos domain is [-1,1]")
         return math.degrees(math.acos(x))
-
 
     def asin_value(self, x):
         return math.degrees(math.asin(float(x)))
